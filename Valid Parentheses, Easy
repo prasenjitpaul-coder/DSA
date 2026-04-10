@@ -1,0 +1,36 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    let value = [];
+    for (let x of s) {
+        if (x === "(" || x === "{" || x === "[") {
+            value.push(x);
+
+        } else {
+            let top = value[value.length - 1]
+
+            if (value.length === 0) {
+                return false
+            }
+
+            if (x === ")" && top === "(" || x === "]" && top === "[" || x === "}" && top === "{") {
+                value.pop()
+
+
+            } else {
+                return false
+            }
+
+        }
+
+    }
+
+    if (value.length != 0) {
+        return false
+    } else {
+        return true
+    }
+    return true
+};
